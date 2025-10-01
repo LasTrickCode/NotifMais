@@ -45,7 +45,7 @@ Aqui está a estrutura do repositório
 
 1. Clone o repositório  
    ```bash
-   git clone https://github.com/RichardXIII/Challenge-Entrega-3-Sprint.git
+   git clone https://github.com/LasTrickCode/NotifMais
 
    cd Notifmais
 
