@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# Challenge Entrega 3 – Sprint
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Sistema desenvolvido no contexto da entrega da terceira sprint do desafio do curso (ou projeto) — gerenciador de lembretes / consultas médicas / sistema de notificações e sessões.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Informações do Projeto
 
-## React Compiler
+### Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **TypeScript** — para tipagem forte no frontend  
+- **React** / **React Router Dom** — para a interface e rotas  
+- **Vite** — ferramenta de bundling / scaffolding  
+- **JavaScript / HTML / CSS** — estrutura básica do app web  
+- Outras dependências conforme o `package.json`  
 
-## Expanding the ESLint configuration
+### Integrantes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Nome 1 — função / papel  
+- Nome 2 — função / papel  
+- Nome 3 — função / papel  
+- (Adicionar quantos forem do grupo)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📁 Estrutura de Pastas do Projeto
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Aqui está a estrutura do repositório 
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+├── src
+│ ├── components
+│ ├── pages
+│ ├── routes
+│ ├── styles
+│ ├── types
+│ ├── App.tsx
+│ └── main.tsx
+├── .gitignore
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+└── README.md
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠 Como Executar / Usar
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone o repositório  
+   ```bash
+   git clone https://github.com/RichardXIII/Challenge-Entrega-3-Sprint.git
+
+   cd Notifmais
+
+   npm install
+   npm run dev
+  Acesse no navegador
+
+  Vídeo de Apresentação
+
+  Confira o vídeo demonstrativo do sistema no YouTube:
+
+  📝 Descrição das Funcionalidades
+
+  Cadastro de Notificações (tipo de consulta, data)
+
+  Listagem de Notificações já criadas
+
+  Navegação entre telas (formulário, listagem, detalhes)
