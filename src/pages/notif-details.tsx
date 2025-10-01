@@ -3,8 +3,12 @@ import { NotifCard } from "../components/notif-card";
 
 export function NotifDetails() {
   const { id } = useParams();
+  const location = useLocation();
+  const notif = location.state?.notif; 
 
-  const { state } = useLocation();
+  if (!notif) {
+    return <p>Notificação não encontrada!</p>;
+  }
 
   return (
     <>
@@ -12,7 +16,7 @@ export function NotifDetails() {
         Detalhes da sessão - ID {id}
       </h2>
 
-      <NotifCard notif={state.session} />
+      <NotifCard notif={notif} />
     </>
   );
 }
