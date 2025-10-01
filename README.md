@@ -1,6 +1,6 @@
 # Challenge Entrega 3 – Sprint
 
-> Sistema desenvolvido no contexto da entrega da terceira sprint do desafio do curso (ou projeto) — gerenciador de lembretes / consultas médicas / sistema de notificações e sessões.
+> Sistema desenvolvido no contexto da entrega da terceira sprint — gerenciador de lembretes / consultas médicas / sistema de notificações e sessões.
 
 ---
 
@@ -16,10 +16,10 @@
 
 ### Integrantes
 
-- Nome 1 — função / papel  
-- Nome 2 — função / papel  
-- Nome 3 — função / papel  
-- (Adicionar quantos forem do grupo)
+- Richard Emiliano Rodrigues da silva - Desenvolvimento das paginas e estilização 
+- Daniel Fonseca de almeida - Desenvolvimento de Componentes 
+- Pedro Fonseca de almeida - Desenvolvimento de Componentes 
+
 
 ---
 
@@ -51,11 +51,12 @@ Aqui está a estrutura do repositório
 
    npm install
    npm run dev
+
   Acesse no navegador
 
-  Vídeo de Apresentação
-
+ 
   Confira o vídeo demonstrativo do sistema no YouTube:
+   https://youtu.be/pwfYuXRbkQ8
 
   📝 Descrição das Funcionalidades
 
