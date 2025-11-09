@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 import type { Lembrete } from "../types/lembrete";
 import type { Consulta } from "../types/consulta";
-
 import { API_NOTIF } from "../api/notif-info";
+import { StatusConfirmacao } from "../components/status-confirmacao"; // ✅ import do componente
 
 export function Home() {
   const [lembretes, setLembretes] = useState<Lembrete[]>([]);
   const [loading, setLoading] = useState(true);
+  const [expandido, setExpandido] = useState<number | null>(null); // ✅ controla qual card está expandido
 
   useEffect(() => {
-    // pega o pacienteId salvo no login (pode ser string no localStorage)
     const pacienteIdRaw = localStorage.getItem("pacienteId");
     if (!pacienteIdRaw) {
       setLoading(false);
       return;
     }
 
-    // parse pra número (seguro caso tenha salvo string)
     const pacienteId = Number(pacienteIdRaw);
     if (Number.isNaN(pacienteId)) {
       console.error("pacienteId inválido no localStorage:", pacienteIdRaw);
@@ -41,6 +40,10 @@ export function Home() {
     fetchLembretes();
   }, []);
 
+  const alternarExpandir = (id: number) => {
+    setExpandido(expandido === id ? null : id);
+  };
+
   if (loading) {
     return <div className="text-center mt-10 text-gray-500">Carregando lembretes...</div>;
   }
@@ -58,7 +61,21 @@ export function Home() {
           const consulta: Consulta | undefined = lembrete.consulta;
           if (!consulta) return null;
 
-     
+          // pega dataHora da API, ou dataConsulta (fallback)
+          const dataHoraRaw = (consulta as any).dataHora || consulta.dataHora;
+          const dataObj = new Date(dataHoraRaw);
+          const dataFormatada = isNaN(dataObj.getTime())
+            ? "Data inválida"
+            : dataObj.toLocaleDateString("pt-BR", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              }) +
+              " às " +
+              dataObj.toLocaleTimeString("pt-BR", {
+                hour: "2-digit",
+                minute: "2-digit",
+              });
 
           return (
             <div
@@ -77,7 +94,9 @@ export function Home() {
                 <p>
                   <strong>Paciente:</strong> {consulta.paciente?.nome}
                 </p>
-                
+                <p>
+                  <strong>Data:</strong> {dataFormatada}
+                </p>
                 <p>
                   <strong>Status:</strong>{" "}
                   <span
@@ -97,6 +116,33 @@ export function Home() {
                   </span>
                 </p>
               </div>
+
+              {/* 🔽 Botão de expansão */}
+              <div className="flex justify-end mt-3">
+                <button
+                  onClick={() => alternarExpandir(lembrete.id)}
+                  className="text-gray-500 hover:text-gray-700 text-sm transition"
+                >
+                  {expandido === lembrete.id ? "▲ Ocultar ações" : "▼ Mostrar ações"}
+                </button>
+              </div>
+
+              {/* ✅ Botões de ação visíveis ao expandir */}
+              {expandido === lembrete.id && (
+                <div className="mt-3 border-t border-gray-200 pt-3">
+                  <StatusConfirmacao
+                    consultaId={consulta.id}
+                    onAtualizar={() => {
+                      const pacienteId = localStorage.getItem("pacienteId");
+                      if (!pacienteId) return;
+                      fetch(`${API_NOTIF}/lembretes?pacienteId=${pacienteId}`)
+                        .then((res) => res.json())
+                        .then((data) => setLembretes(data))
+                        .catch((err) => console.error(err));
+                    }}
+                  />
+                </div>
+              )}
             </div>
           );
         })}

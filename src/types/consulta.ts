@@ -10,7 +10,7 @@ export interface Consulta {
     nome: string;
     especialidade: string;
   }
-  dataConsulta: string;
+  dataHora: string;
   tipo: string;
   statusConfirmacao: 'C' | 'P' | 'D';
 }
